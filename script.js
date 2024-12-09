@@ -1,6 +1,6 @@
 const episodes = {
   "仙境": ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3", "EP07.mp3"],
-  神: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3"],
+  dramaB: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3"],
   dramaC: ["episode1.mp3", "episode2.mp3", "episode3.mp3", "episode4.mp3"],
   dramaD: ["episode1.mp3"]
 };
