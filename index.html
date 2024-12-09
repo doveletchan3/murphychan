@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>電台廣播劇</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>電台廣播劇</h1>
+<div id="drama-buttons">
+  <button data-drama="dramaA" onclick="loadEpisodes('dramaA')">衛斯理系列-03-仙境</button>
+  <button data-drama="dramaB" onclick="loadEpisodes('dramaB')">Drama B</button>
+  <button data-drama="dramaC" onclick="loadEpisodes('dramaC')">Drama C</button>
+  <button data-drama="dramaD" onclick="loadEpisodes('dramaD')">Drama D</button>
+</div>
+<div id="episode-buttons"></div>
+<audio id="audio-player" controls></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
