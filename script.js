@@ -3,9 +3,13 @@ const episodes = {
   dramaB: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3"],
   dramaC: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3", "EP07.mp3"],
 };
+const audioPlayer = document.getElementById("audio-player");
+const playPauseBtn = document.getElementById("play-pause-btn");
+const stopBtn = document.getElementById("stop-btn");
 
 let activeDramaButton = null; // To track the active drama button
 let activeEpisodeButton = null; // To track the active episode button
+let isPlaying = false;
 
 function loadEpisodes(drama) {
   const episodeDiv = document.getElementById("episode-buttons");
@@ -53,3 +57,23 @@ function resetButtonStyle(button) {
   button.style.backgroundColor = "";
   button.style.color = "";
 }
+
+// Play/Pause Button
+playPauseBtn.addEventListener("click", () => {
+  if (isPlaying) {
+    audioPlayer.pause();
+    playPauseBtn.textContent = "Play";
+  } else {
+    audioPlayer.play();
+    playPauseBtn.textContent = "Pause";
+  }
+  isPlaying = !isPlaying;
+});
+
+// Stop Button
+stopBtn.addEventListener("click", () => {
+  audioPlayer.pause();
+  audioPlayer.currentTime = 0; // Reset to the beginning
+  isPlaying = false;
+  playPauseBtn.textContent = "Play";
+});
