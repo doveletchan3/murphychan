@@ -41,14 +41,17 @@ button.active {
 }
 
 #play-pause-btn, #stop-btn {
-  font-size: 24px;
-  padding: 20px 40px;
+  font-size: 40px; /* Large font for better visibility */
+  width: 80px;
+  height: 80px;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   background-color: #007BFF;
   color: white;
   cursor: pointer;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #play-pause-btn:hover, #stop-btn:hover {

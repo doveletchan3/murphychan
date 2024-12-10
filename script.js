@@ -7,6 +7,9 @@ const audioPlayer = document.getElementById("audio-player");
 const playPauseBtn = document.getElementById("play-pause-btn");
 const stopBtn = document.getElementById("stop-btn");
 
+const playIcon = document.getElementById("play-icon");
+const pauseIcon = document.getElementById("pause-icon");
+
 let activeDramaButton = null; // To track the active drama button
 let activeEpisodeButton = null; // To track the active episode button
 let isPlaying = false;
@@ -62,10 +65,12 @@ function resetButtonStyle(button) {
 playPauseBtn.addEventListener("click", () => {
   if (isPlaying) {
     audioPlayer.pause();
-    playPauseBtn.textContent = "Play";
+    playIcon.style.display = "inline";
+    pauseIcon.style.display = "none";
   } else {
     audioPlayer.play();
-    playPauseBtn.textContent = "Pause";
+    playIcon.style.display = "none";
+    pauseIcon.style.display = "inline";
   }
   isPlaying = !isPlaying;
 });
@@ -75,5 +80,6 @@ stopBtn.addEventListener("click", () => {
   audioPlayer.pause();
   audioPlayer.currentTime = 0; // Reset to the beginning
   isPlaying = false;
-  playPauseBtn.textContent = "Play";
+  playIcon.style.display = "inline";
+  pauseIcon.style.display = "none";
 });
