@@ -5,48 +5,52 @@ const episodes = {
   dramaD: ["episode1.mp3"]
 };
 
-function loadDrama(drama) {
+let activeDramaButton = null; // To track the active drama button
+let activeEpisodeButton = null; // To track the active episode button
+
+function loadEpisodes(drama) {
+  const episodeDiv = document.getElementById("episode-buttons");
+  episodeDiv.innerHTML = ""; // Clear episode buttons
+
   // Highlight the active drama button
-  document.querySelectorAll(".drama").forEach((btn) => btn.classList.remove("active"));
-  document.querySelector(`button[onclick="loadDrama('${drama}')"]`).classList.add("active");
+  if (activeDramaButton) resetButtonStyle(activeDramaButton); // Reset previous drama button
+  const dramaButtons = document.getElementById("drama-buttons").children;
+  for (let button of dramaButtons) {
+    if (button.dataset.drama === drama) {
+      activeDramaButton = button;
+      setActiveButtonStyle(button); // Highlight selected drama button
+    }
+  }
 
-  // Load the episodes for the selected drama
-  const episodeContainer = document.getElementById("episode-buttons");
-  episodeContainer.innerHTML = ""; // Clear previous episodes
-  episodes[drama].forEach((episode, index) => {
-    const button = document.createElement("button");
-    button.textContent = `Episode ${index + 1}`;
-    button.onclick = () => playEpisode(drama, episode);
-    episodeContainer.appendChild(button);
-  });
-
-  // Update the latest drama in localStorage
-  localStorage.setItem("latestDrama", drama);
-  updateLatestSelection();
+  // Add episode buttons for the selected drama
+  if (episodes[drama]) {
+    episodes[drama].forEach((episode, index) => {
+      const button = document.createElement("button");
+      button.textContent = `第 ${index + 1} 集`;
+      button.dataset.episode = episode; // Store episode info
+      button.onclick = () => playEpisode(button, drama, episode);
+      episodeDiv.appendChild(button);
+    });
+  }
 }
 
-function playEpisode(drama, episode) {
-  // Play the selected episode
+function playEpisode(button, drama, episode) {
   const audioPlayer = document.getElementById("audio-player");
   audioPlayer.src = `audio/${drama}/${episode}`;
   audioPlayer.play();
 
   // Highlight the active episode button
-  document.querySelectorAll("#episode-buttons button").forEach((btn) => btn.classList.remove("active"));
-  event.target.classList.add("active");
-
-  // Update the latest episode in localStorage
-  localStorage.setItem("latestEpisode", `${drama} - ${episode}`);
-  updateLatestSelection();
+  if (activeEpisodeButton) resetButtonStyle(activeEpisodeButton); // Reset previous episode button
+  setActiveButtonStyle(button); // Highlight current episode button
+  activeEpisodeButton = button;
 }
 
-function updateLatestSelection() {
-  const latestDrama = localStorage.getItem("latestDrama") || "None";
-  const latestEpisode = localStorage.getItem("latestEpisode") || "None";
-
-  document.getElementById("latest-drama").textContent = latestDrama;
-  document.getElementById("latest-episode").textContent = latestEpisode;
+function setActiveButtonStyle(button) {
+  button.style.backgroundColor = "blue";
+  button.style.color = "white";
 }
 
-// Initialize the latest selection on page load
-updateLatestSelection();
+function resetButtonStyle(button) {
+  button.style.backgroundColor = "";
+  button.style.color = "";
+}
