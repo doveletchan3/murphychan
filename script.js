@@ -6,6 +6,7 @@ const episodes = {
 const audioPlayer = document.getElementById("audio-player");
 const playPauseBtn = document.getElementById("play-pause-btn");
 const stopBtn = document.getElementById("stop-btn");
+const refreshBtn = document.getElementById("refresh-btn");
 
 const playIcon = document.getElementById("play-icon");
 const pauseIcon = document.getElementById("pause-icon");
@@ -82,4 +83,9 @@ stopBtn.addEventListener("click", () => {
   isPlaying = false;
   playIcon.style.display = "inline";
   pauseIcon.style.display = "none";
+});
+
+// Refresh Page
+refreshBtn.addEventListener("click", () => {
+  location.reload();
 });
