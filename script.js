@@ -33,7 +33,8 @@ function loadEpisodes(drama) {
   if (episodes[drama]) {
     episodes[drama].forEach((episode, index) => {
       const button = document.createElement("button");
-      button.textContent = `第 ${index + 1} 集`;
+     // button.textContent = `第 ${index + 1} 集`;
+	  button.textContent = ` ${index + 1} `;
       button.dataset.episode = episode; // Store episode info
       button.onclick = () => playEpisode(button, drama, episode);
       episodeDiv.appendChild(button);
