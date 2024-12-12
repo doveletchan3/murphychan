@@ -3,13 +3,13 @@ const episodes = {
   dramaB: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3"],
   dramaC: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3", "EP07.mp3"],
 };
+
 const audioPlayer = document.getElementById("audio-player");
 const playPauseBtn = document.getElementById("play-pause-btn");
-const stopBtn = document.getElementById("stop-btn");
-const refreshBtn = document.getElementById("refresh-btn");
-
 const playIcon = document.getElementById("play-icon");
 const pauseIcon = document.getElementById("pause-icon");
+const stopBtn = document.getElementById("stop-btn");
+const refreshBtn = document.getElementById("refresh-btn");
 
 let activeDramaButton = null; // To track the active drama button
 let activeEpisodeButton = null; // To track the active episode button
@@ -50,6 +50,11 @@ function playEpisode(button, drama, episode) {
   if (activeEpisodeButton) resetButtonStyle(activeEpisodeButton); // Reset previous episode button
   setActiveButtonStyle(button); // Highlight current episode button
   activeEpisodeButton = button;
+
+  // Ensure the Play/Pause button shows "Pause" and updates state
+  playIcon.style.display = "none";
+  pauseIcon.style.display = "inline";
+  isPlaying = true;
 }
 
 function setActiveButtonStyle(button) {
