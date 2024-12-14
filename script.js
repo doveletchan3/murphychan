@@ -1,5 +1,5 @@
 const episodes = {
-  dramaA: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3", "EP07.mp3", "EP08.mp3", "EP09.mp3", "EP10.mp3","EP11.mp3", "EP12.mp3", "EP13.mp3", "EP14.mp3", "EP15.mp3"],
+  dramaA: ["EP16.mp3", "EP17.mp3", "EP18.mp3", "EP19.mp3", "EP20.mp3", "EP21.mp3", "EP22.mp3", "EP23.mp3", "EP24.mp3", "EP25.mp3","EP26.mp3", "EP27.mp3", "EP28.mp3", "EP29.mp3", "EP30.mp3", "EP31.mp3", "EP32.mp3"],
   dramaB: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3"],
   dramaC: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3", "EP07.mp3"],
 };
