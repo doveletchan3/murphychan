@@ -1,7 +1,16 @@
 const episodes = {
-  dramaA: ["1.mp3", "2.mp3", "3.mp3", "4.mp3", "5.mp3", "6.mp3", "7.mp3", "8.mp3", "9.mp3", "10.mp3","11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "EP16.mp3", "EP17.mp3", "EP18.mp3", "EP19.mp3", "EP20.mp3", "EP21.mp3", "EP22.mp3", "EP23.mp3", "EP24.mp3", "EP25.mp3","EP26.mp3", "EP27.mp3", "EP28.mp3", "EP29.mp3", "EP30.mp3", "EP31.mp3", "EP32.mp3"],
+  dramaA: ["EP16.mp3", "EP17.mp3", "EP18.mp3", "EP19.mp3", "EP20.mp3", "EP21.mp3", "EP22.mp3", "EP23.mp3", "EP24.mp3", "EP25.mp3", "EP26.mp3", "EP27.mp3", "EP28.mp3", "EP29.mp3", "EP30.mp3", "EP31.mp3", "EP32.mp3"],
   dramaB: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3"],
   dramaC: ["EP01.mp3", "EP02.mp3", "EP03.mp3", "EP04.mp3", "EP05.mp3", "EP06.mp3", "EP07.mp3"],
+  dramaD: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3"],
+};
+
+// Define starting episodes for each drama
+const startingEpisodes = {
+  dramaA: 16, // Start displaying from episode 16
+  dramaB: 1, // Start displaying from episode 1
+  dramaC: 1, // Start displaying from episode 1
+  dramaD: 1, // Start displaying from episode 1
 };
 
 const audioPlayer = document.getElementById("audio-player");
@@ -29,12 +38,14 @@ function loadEpisodes(drama) {
     }
   }
 
+  const startEpisode = startingEpisodes[drama] || 1; // Default to 1 if not specified
+
   // Add episode buttons for the selected drama
   if (episodes[drama]) {
     episodes[drama].forEach((episode, index) => {
+      const displayedEpisodeNumber = startEpisode + index;
       const button = document.createElement("button");
-     // button.textContent = `第 ${index + 1} 集`;
-	  button.textContent = ` ${index + 1} `;
+      button.textContent = ` ${displayedEpisodeNumber} `;
       button.dataset.episode = episode; // Store episode info
       button.onclick = () => playEpisode(button, drama, episode);
       episodeDiv.appendChild(button);
