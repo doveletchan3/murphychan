@@ -11,6 +11,7 @@ const startingEpisodes = {
   dramaB: 1, // Start displaying from episode 1
   dramaC: 1, // Start displaying from episode 1
   dramaD: 1, // Start displaying from episode 1
+  dramaE: 1, // Start displaying from episode 1
 };
 
 const audioPlayer = document.getElementById("audio-player");
