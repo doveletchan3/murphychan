@@ -1,12 +1,18 @@
 const episodes = {
   dramaG: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3"],
-
-  dramaH: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3" ],
+  dramaH: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3"],
 };
+
 // Define starting episodes for each drama
 const startingEpisodes = {
   dramaG: 1, // Start displaying from episode 1
-  dramaH: 1, // Start displaying from episode 1-20
+  dramaH: 1, // Start displaying from episode 1
+};
+
+// Define the increment value for each drama
+const episodeIncrements = {
+  dramaG: 1, // Increment by 1 for dramaG
+  dramaH: 1, // Increment by 1 for dramaH
 };
 
 const audioPlayer = document.getElementById("audio-player");
@@ -35,11 +41,12 @@ function loadEpisodes(drama) {
   }
 
   const startEpisode = startingEpisodes[drama] || 1; // Default to 1 if not specified
+  const increment = episodeIncrements[drama] || 1; // Default to increment by 1
 
   // Add episode buttons for the selected drama
   if (episodes[drama]) {
     episodes[drama].forEach((episode, index) => {
-      const displayedEpisodeNumber = startEpisode + index;
+      const displayedEpisodeNumber = startEpisode + index * increment;
       const button = document.createElement("button");
       button.textContent = ` ${displayedEpisodeNumber} `;
       button.dataset.episode = episode; // Store episode info
