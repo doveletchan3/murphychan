@@ -1,23 +1,17 @@
 const episodes = {
-  dramaF: ["42.mp3", "44.mp3", "46.mp3", "48.mp3", "50.mp3", "52.mp3", "54.mp3", "56.mp3", "58.mp3", "60.mp3", "62.mp3", "64.mp3"],
   dramaH: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3"],
-  dramaN: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3"],
   dramaO: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3"],
 };
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaF: 42, // Start displaying from episode 42
   dramaH: 1, // Start displaying from episode 1
-  dramaN: 1, // Start displaying from episode 1
   dramaO: 1, // Start displaying from episode 1
 };
 
 // Define the increment value for each drama
 const episodeIncrements = {
-  dramaF: 2, // Increment by 2
   dramaH: 1, // Increment by 1
-  dramaN: 1, // Increment by 1
   dramaO: 1, // Increment by 1
 };
 
