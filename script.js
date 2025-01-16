@@ -1,5 +1,4 @@
 const episodes = {
-  dramaO: ["69.mp3", "70.mp3", "71.mp3", "72.mp3", "73.mp3", "74.mp3", "75.mp3", "76.mp3", "77.mp3", "78.mp3", "79.mp3", "80.mp3", "81.mp3", "82.mp3", "83.mp3", "84.mp3", "85.mp3"],
   dramaP: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3"],
   dramaQ: ["01.mp3", "03.mp3", "05.mp3", "07.mp3", "09.mp3", "11.mp3", "13.mp3"],
   dramaR: ["15.mp3", "18.mp3", "21.mp3"],
@@ -7,7 +6,6 @@ const episodes = {
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaO: 69, // Start displaying from episode 69
   dramaP: 1, // Start displaying from episode 1
   dramaQ: 1, // Start displaying from episode 1
   dramaR: 15, // Start displaying from episode 15
@@ -15,7 +13,6 @@ const startingEpisodes = {
 
 // Define the increment value for each drama
 const episodeIncrements = {
-  dramaO: 1, // Increment by 1
   dramaP: 1, // Increment by 1
   dramaQ: 2, // Increment by 2
   dramaR: 3, // Increment by 3
