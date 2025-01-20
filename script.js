@@ -1,19 +1,25 @@
 const episodes = {
-  dramaQ: ["24.mp3", "26.mp3", "28.mp3", "30.mp3", "32.mp3"],
-  dramaR: ["34.mp3", "37.mp3", "40.mp3", "43.mp3", "46.mp3"],
+  dramaR: ["46.mp3"],
+  dramaS: ["50-52.mp3", "53-55.mp3"],
+  dramaR2: ["56-59.mp3"],
+  dramaP: ["60.mp3"],
 };
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaQ: 24, // Start displaying from episode 24
-  dramaR: 34, // Start displaying from episode 34
+  dramaR: 46, // Start displaying from episode 46
+  dramaS: 50, // Start displaying from episode 50
+  dramaR2: 56, // Start displaying from episode 56
+  dramaP: 60, // Start displaying from episode 60
 };
 
 // Define the increment value for each drama
 const episodeIncrements = {
   dramaP: 1, // Increment by 1
   dramaQ: 2, // Increment by 2
-  dramaR: 3, // Increment by 3
+  dramaR: 4, // Increment by 4
+  dramaS: 3, // Increment by 3
+  dramaR2: 4, // Increment by 4
 };
 
 const audioPlayer = document.getElementById("audio-player");
