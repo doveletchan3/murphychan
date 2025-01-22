@@ -8,6 +8,8 @@ const episodes = {
   dramaQ: ["82-83.mp3"],
   dramaQ2: ["85-86.mp3", "87-88.mp3", "89-90.mp3", "91-92.mp3"],
   dramaQ3: ["79-80.mp3"],
+  dramaT: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3"],
+  Song1: ["song1.mp3"],
 };
 
 // Define starting episodes for each drama
@@ -21,6 +23,8 @@ const startingEpisodes = {
   dramaQ: 82, // Start displaying from episode 82
   dramaQ2: 85, // Start displaying from episode 85
   dramaQ3: 79, // Start displaying from episode 79
+  dramaT: 1, // Start displaying from episode 1
+  Song1: 1, // Start displaying from episode 1
 };
 
 // Define the increment value for each drama
@@ -34,6 +38,8 @@ const episodeIncrements = {
   dramaS: 3, // Increment by 3
   dramaR2: 4, // Increment by 4
   dramaS2: 3, // Increment by 3
+  dramaT: 1, // Increment by 1
+  Song1: 1, // Increment by 1
 };
 
 const audioPlayer = document.getElementById("audio-player");
