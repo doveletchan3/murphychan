@@ -3,10 +3,10 @@ const episodes = {
   dramaS: ["76-78.mp3"],
   dramaR2: ["56-59.mp3"],
   dramaP: ["81.mp3"],
-  dramaP2: ["69.mp3"],
+  dramaP2: ["84.mp3"],
   dramaS2: ["61-63.mp3", "64-66.mp3"],
-  dramaQ: ["67-68.mp3"],
-  dramaQ2: ["70-71.mp3", "72-73.mp3", "74-75.mp3"],
+  dramaQ: ["82-83.mp3"],
+  dramaQ2: ["85-86.mp3", "87-88.mp3", "89-90.mp3", "91-92.mp3"],
   dramaQ3: ["79-80.mp3"],
 };
 
@@ -16,10 +16,10 @@ const startingEpisodes = {
   dramaS: 76, // Start displaying from episode 76
   dramaR2: 56, // Start displaying from episode 56
   dramaP: 81, // Start displaying from episode 81
-  dramaP2: 69, // Start displaying from episode 69
+  dramaP2: 84, // Start displaying from episode 84
   dramaS2: 61, // Start displaying from episode 61
-  dramaQ: 67, // Start displaying from episode 67
-  dramaQ2: 70, // Start displaying from episode 70
+  dramaQ: 82, // Start displaying from episode 82
+  dramaQ2: 85, // Start displaying from episode 85
   dramaQ3: 79, // Start displaying from episode 79
 };
 
