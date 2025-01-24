@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -7,7 +8,7 @@ body {
 button {
   margin: 10px;
   padding: 10px 20px;
-  font-size: 45px;
+  font-size: 45px; /* Default font size */
   cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -26,6 +27,20 @@ button:focus {
 button.active {
   background-color: blue;
   color: white;
+}
+
+/* Media query for iPads (larger font size) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  button {
+    font-size: 55px; /* Increase font size for iPads */
+  }
+}
+
+/* Media query for Android mobiles (smaller font size) */
+@media (max-width: 767px) {
+  button {
+    font-size: 35px; /* Decrease font size for smaller screens */
+  }
 }
 
 #audio-player {
