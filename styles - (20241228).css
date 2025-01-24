@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 45px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: black;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+button:focus {
+  outline: none;
+}
+
+button.active {
+  background-color: blue;
+  color: white;
+}
+
+#audio-player {
+  margin-top: 20px;
+  width: 80%;
+}
+
+#controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#play-pause-btn, #stop-btn {
+  font-size: 40px; /* Large font for better visibility */
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 50%;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#play-pause-btn:hover, #stop-btn:hover {
+  background-color: #0056b3;
+}
+
+#play-pause-btn:active, #stop-btn:active {
+  background-color: #003d80;
+}
+
+#refresh-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 28px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #b12405; /* Deep red color */
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#refresh-btn:hover {
+  background-color: #8f1d04; /* Slightly darker red for hover */
+}
+
+#refresh-btn:active {
+  background-color: #6d1603; /* Even darker red for active */
+}
