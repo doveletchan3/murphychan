@@ -1,11 +1,11 @@
 const episodes = {
-  dramaT: ["16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "30.mp3" ],
+  dramaT: ["26.mp3", "27.mp3", "28.mp3", "29.mp3", "30.mp3", "31.mp3", "32.mp3", "33.mp3", "34.mp3", "35.mp3", "36.mp3", "37.mp3", "38.mp3", "39.mp3", "40.mp3" ],
   song1: ["song1.mp3"],
 };
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaT: 16, // Start displaying from episode 16
+  dramaT: 26, // Start displaying from episode 26
   song1: 1, // Start displaying from episode 1
 };
 
