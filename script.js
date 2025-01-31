@@ -1,16 +1,18 @@
 const episodes = {
-  dramaT: ["75.mp3", "76.mp3", "77.mp3", "78.mp3", "79.mp3", "80.mp3", "81.mp3", "82.mp3", "83.mp3", "84.mp3", "85.mp3", "86.mp3", "87.mp3", "88.mp3", "89.mp3", "90.mp3", "91.mp3", "92.mp3", "93.mp3", "94.mp3", "95.mp3", "96.mp3", "97.mp3", "98.mp3"],
+  dramaT: ["98.mp3", "99.mp3", "100.mp3", "101.mp3", "102.mp3", "103.mp3"],
   song1: ["song1.mp3"],
   dramaU: ["01-02.mp3", "03-04.mp3", "05-06.mp3", "07-08.mp3", "09-10.mp3", "11-12.mp3"],
   dramaV: ["01-02.mp3", "03-04.mp3", "05-06.mp3", "07-08.mp3", "09-10.mp3", "11-12.mp3"],
+  dramaR: ["01-02.mp3", "03-04.mp3", "05-06.mp3", "07-08.mp3", "09-10.mp3"],
 };
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaT: 75, // Start displaying from episode 75
+  dramaT: 98, // Start displaying from episode 98
   song1: 1, // Start displaying from episode 1
   dramaU: 1, // Start displaying from episode 1
   dramaV: 1, // Start displaying from episode 1
+  dramaR: 1, // Start displaying from episode 1
 };
 
 // Define the increment value for each drama
@@ -19,6 +21,7 @@ const episodeIncrements = {
   song1: 1, // Increment by 1
   dramaU: 2, // Increment by 2
   dramaV: 2, // Increment by 2
+  dramaR: 2, // Increment by 2
 };
 
 const audioPlayer = document.getElementById("audio-player");
