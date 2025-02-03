@@ -30,14 +30,14 @@ button.active {
 }
 
 /* Media query for iPads (larger font size) */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+@media (min-width: 900px) and (max-width: 1024px) and (orientation: portrait) {
   button {
     font-size: 55px; /* Increase font size for iPads */
   }
 }
 
 /* Media query for Android mobiles (smaller font size) */
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   button {
     font-size: 35px; /* Decrease font size for smaller screens */
   }
