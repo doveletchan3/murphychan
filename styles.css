@@ -39,7 +39,7 @@ button.active {
 /* Media query for Android mobiles (smaller font size) */
 @media (max-width: 900px) {
   button {
-    font-size: 20px; /* Decrease font size for smaller screens */
+    font-size: 25px; /* Decrease font size for smaller screens */
   }
 }
 
