@@ -3,6 +3,7 @@ const episodes = {
   dramaK: ["01-02.mp3", "03-04.mp3", "05-06.mp3", "07-08.mp3", "09-10.mp3", "11-12.mp3"],
   dramaL: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3"],
   dramaM: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3"],
+  dramaN: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3","07.mp3", "08.mp3", "09.mp3", "10.mp3"],
   song1: ["song1.mp3", "song2.mp3"],
 };
 
@@ -12,6 +13,7 @@ const startingEpisodes = {
   dramaK: 1, // Start displaying from episode 1
   dramaL: 1, // Start displaying from episode 1
   dramaM: 1, // Start displaying from episode 1
+  dramaN: 1, // Start displaying from episode 1
   song1: 1, // Start displaying from episode 1
 };
 
@@ -21,6 +23,7 @@ const episodeIncrements = {
   dramaK: 2, // Increment by 2
   dramaL: 1, // Increment by 1
   dramaM: 1, // Increment by 1
+  dramaN: 1, // Increment by 1
   song1: 1, // Increment by 1
 };
 
