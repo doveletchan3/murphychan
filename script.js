@@ -1,23 +1,20 @@
 const episodes = {
-  dramaX: ["01.mp3", "02.mp3", "03.mp3", "04.mp3","05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3"],
-  dramaY: ["01.mp3", "02.mp3", "03.mp3", "04.mp3","05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3","15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3"],   
-  dramaZ: ["01.mp3", "02.mp3", "03.mp3", "04.mp3","05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3","15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],   
+  dramaZ: ["01.mp3", "02.mp3", "03.mp3", "04.mp3","05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3","15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"], 
+  dramaA: ["01.mp3", "02.mp3", "03.mp3", "04.mp3","05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3","15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3"],   
   song1: ["song1.mp3", "song2.mp3"],
 };
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaX: 1, // Start displaying from episode 1
-  dramaY: 1, // Start displaying from episode 1
   dramaZ: 1, // Start displaying from episode 1
+  dramaA: 1, // Start displaying from episode 1
   song1: 1, // Start displaying from episode 1
 };
 
 // Define the increment value for each drama
 const episodeIncrements = {
-  dramaX: 1, // Increment by 1 
-  dramaY: 1, // Increment by 1 
   dramaZ: 1, // Increment by 1 
+  dramaA: 1, // Increment by 1 
   song1: 1, // Increment by 1
 };
 
