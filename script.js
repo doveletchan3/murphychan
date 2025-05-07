@@ -1,11 +1,11 @@
 const episodes = {
-  dramaG: ["22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "30.mp3", "31.mp3", "32.mp3", "33.mp3", "34.mp3", "35.mp3", "36.mp3", "37.mp3", "38.mp3", "39.mp3", "40.mp3", "41.mp3", "42.mp3", "43.mp3", "44.mp3", "45.mp3"],
+  dramaG: ["46.mp3", "47.mp3", "48.mp3", "49.mp3", "50.mp3", "51.mp3", "52.mp3", "53.mp3", "54.mp3", "55.mp3", "56.mp3", "57.mp3", "58.mp3", "59.mp3", "60.mp3", "61.mp3", "62.mp3", "63.mp3", "64.mp3", "65.mp3", "66.mp3", "67.mp3", "68.mp3", "69.mp3"],
   song1: ["song1.mp3", "song2.mp3"],  
 };
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaG: 22, // Start displaying from episode 22
+  dramaG: 46, // Start displaying from episode 46
   song1: 1, // Start displaying from episode 1
 };
 
