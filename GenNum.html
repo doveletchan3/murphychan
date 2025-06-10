@@ -27,6 +27,10 @@
       background: #fff;
       border: 1px solid #ccc;
       padding: 10px;
+      min-height: 50px;
+    }
+    #copyBtn {
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -43,6 +47,8 @@
 
   <div id="result"></div>
 
+  <button id="copyBtn" onclick="copyToClipboard()">Copy</button>
+
   <script>
     function generateMP3List() {
       const start = parseInt(document.getElementById('startNum').value);
@@ -58,7 +64,21 @@
       for (let i = start; i <= end; i++) {
         output += `"${i}.mp3", `;
       }
-      resultDiv.textContent = output.slice(0, -2); // remove last comma and space
+      resultDiv.textContent = output.slice(0, -2); // remove trailing comma and space
+    }
+
+    function copyToClipboard() {
+      const text = document.getElementById('result').textContent;
+      if (!text || text.startsWith("Please enter")) {
+        alert("Nothing to copy! Please generate the list first.");
+        return;
+      }
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied to clipboard!");
+      }).catch(err => {
+        alert("Failed to copy: " + err);
+      });
     }
   </script>
 </body>
