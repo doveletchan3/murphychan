@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Numbered MP3 Files</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+    label, input, button {
+      display: block;
+      margin: 10px 0;
+    }
+    input {
+      padding: 5px;
+      width: 100px;
+    }
+    button {
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>MP3 Filename Generator</h2>
+  
+  <label for="startNum">Start#</label>
+  <input type="number" id="startNum" placeholder="e.g. 15">
+
+  <label for="endNum">End#</label>
+  <input type="number" id="endNum" placeholder="e.g. 20">
+
+  <button onclick="generateMP3List()">Generate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function generateMP3List() {
+      const start = parseInt(document.getElementById('startNum').value);
+      const end = parseInt(document.getElementById('endNum').value);
+      const resultDiv = document.getElementById('result');
+      
+      if (isNaN(start) || isNaN(end) || start > end) {
+        resultDiv.textContent = "Please enter valid numbers (start <= end).";
+        return;
+      }
+
+      let output = '';
+      for (let i = start; i <= end; i++) {
+        output += `"${i}.mp3", `;
+      }
+      resultDiv.textContent = output.slice(0, -2); // remove last comma and space
+    }
+  </script>
+</body>
+</html>
