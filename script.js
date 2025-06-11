@@ -16,8 +16,7 @@ const episodes = {
 // Define starting episodes for each drama
 const startingEpisodes = {
   dramaQ: 1, // Start displaying from episode 1
-  dramaS: 61, // Start displaying from episode 61
-  dramaT: 1, // Start displaying from episode 1
+  dramaT: 12, // Start displaying from episode 12
   dramaU: 1, // Start displaying from episode 1
   dramaU1: 1, // Start displaying from episode 1
   dramaV: 1, // Start displaying from episode 1
@@ -30,7 +29,6 @@ const startingEpisodes = {
 // Define the increment value for each drama
 const episodeIncrements = {
   dramaQ: 1, // Increment by 1
-  dramaS: 1, // Increment by 1
   dramaT: 1, // Increment by 1
   dramaU: 1, // Increment by 1
   dramaU1: 1, // Increment by 1
