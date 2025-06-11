@@ -1,7 +1,6 @@
 const episodes = {
   dramaQ: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
-  dramaS: ["61.mp3", "62.mp3", "63.mp3", "64.mp3", "65.mp3", "66.mp3", "67.mp3", "68.mp3", "69.mp3", "70.mp3", "71.mp3", "72.mp3", "73.mp3"],
-  dramaT: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
+  dramaT: ["12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "30.mp3", "31.mp3", "32.mp3", "33.mp3", "34.mp3", "35.mp3"],
   dramaU: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
   dramaU1: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3"],
   dramaV: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
@@ -17,8 +16,7 @@ const episodes = {
 // Define starting episodes for each drama
 const startingEpisodes = {
   dramaQ: 1, // Start displaying from episode 1
-  dramaS: 61, // Start displaying from episode 61
-  dramaT: 1, // Start displaying from episode 1
+  dramaT: 12, // Start displaying from episode 12
   dramaU: 1, // Start displaying from episode 1
   dramaU1: 1, // Start displaying from episode 1
   dramaV: 1, // Start displaying from episode 1
@@ -31,7 +29,6 @@ const startingEpisodes = {
 // Define the increment value for each drama
 const episodeIncrements = {
   dramaQ: 1, // Increment by 1
-  dramaS: 1, // Increment by 1
   dramaT: 1, // Increment by 1
   dramaU: 1, // Increment by 1
   dramaU1: 1, // Increment by 1
