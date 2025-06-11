@@ -82,7 +82,11 @@ function loadEpisodes(drama) {
 
 function playEpisode(button, drama, episode) {
   const audioPlayer = document.getElementById("audio-player");
-  audioPlayer.src = `audio/${drama}/${episode}`;
+  audioPlayer.src = `https://raw.githubusercontent.com/doveletchan3/murphychan/main/audio/${drama}/${episode}`;
+
+//Old version (Jun 11 2025)
+//  audioPlayer.src = `audio/${drama}/${episode}`;
+
   audioPlayer.play();
 
   // Highlight the active episode button
