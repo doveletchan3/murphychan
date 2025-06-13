@@ -28,6 +28,7 @@ jobs:
             index.html
             script.js
             styles.css
+            GenNum.html
             .github
           sparse-checkout-cone-mode: false
 
