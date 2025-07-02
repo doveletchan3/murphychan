@@ -4,7 +4,7 @@ const episodes = {
   dramaV: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
   dramaV1: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3"],
   dramaW: ["21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "30.mp3", "31.mp3", "32.mp3", "33.mp3", "34.mp3", "35.mp3", "36.mp3", "37.mp3", "38.mp3", "39.mp3", "40.mp3", "41.mp3", "42.mp3", "43.mp3"],
-  dramaX: ["128.mp3", "129.mp3", "130.mp3", "131.mp3", "132.mp3", "133.mp3", "134.mp3", "135.mp3", "136.mp3", "137.mp3", "138.mp3", "139.mp3", "140.mp3", "141.mp3", "142.mp3", "143.mp3", "144.mp3", "145.mp3", "146.mp3", "147.mp3", "148.mp3"],
+  dramaX: ["146.mp3", "147.mp3", "148.mp3", "149.mp3", "150.mp3", "151.mp3", "152.mp3", "153.mp3", "154.mp3", "155.mp3", "156.mp3", "157.mp3", "158.mp3", "159.mp3", "160.mp3", "161.mp3", "162.mp3", "163.mp3", "164.mp3", "165.mp3"],
   dramaY: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3"],
   dramaZ: ["23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "30.mp3", "31.mp3", "32.mp3", "33.mp3", "34.mp3", "35.mp3", "36.mp3", "37.mp3", "38.mp3", "39.mp3", "40.mp3", "41.mp3", "42.mp3", "43.mp3", "44.mp3", "45.mp3", "46.mp3"],
   dramaA: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
@@ -22,7 +22,7 @@ const startingEpisodes = {
   dramaV: 1, // Start displaying from episode 1
   dramaV1: 1, // Start displaying from episode 1
   dramaW: 21, // Start displaying from episode 1
-  dramaX: 128, // Start displaying from episode 1
+  dramaX: 146, // Start displaying from episode 146
   dramaY: 1, // Start displaying from episode 1
   dramaZ: 23, // Start displaying from episode 1
   dramaA: 1, // Start displaying from episode 1
