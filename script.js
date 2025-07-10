@@ -1,5 +1,4 @@
 const episodes = {
-  dramaU: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
   dramaV1: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3"],
   dramaY: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3"],
   dramaZ: ["39.mp3", "40.mp3", "41.mp3", "42.mp3", "43.mp3", "44.mp3", "45.mp3", "46.mp3", "47.mp3", "48.mp3"],
@@ -13,7 +12,6 @@ const episodes = {
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaU: 1, // Start displaying from episode 1
   dramaV1: 1, // Start displaying from episode 1
   dramaY: 1, // Start displaying from episode 1
   dramaZ: 39, // Start displaying from episode 1
@@ -24,12 +22,7 @@ const startingEpisodes = {
 
 // Define the increment value for each drama
 const episodeIncrements = {
-  dramaU: 1, // Increment by 1
-  dramaU1: 1, // Increment by 1
-  dramaV: 1, // Increment by 1
   dramaV1: 1, // Increment by 1
-  dramaW: 1, // Increment by 1  
-  dramaX: 1, // Increment by 1 
   dramaY: 1, // Increment by 1 
   dramaZ: 1, // Increment by 1 
   dramaA: 1, // Increment by 1 
