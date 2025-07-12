@@ -1,7 +1,7 @@
 const episodes = {
   dramaV1: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3"],
   dramaY: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3"],
-  dramaA: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
+  dramaA: ["13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "30.mp3", "31.mp3", "32.mp3", "33.mp3", "34.mp3", "35.mp3", "36.mp3"],
   dramaB: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3"],
   song1: ["song1.mp3", "song2.mp3"],
 //
@@ -13,7 +13,7 @@ const episodes = {
 const startingEpisodes = {
   dramaV1: 1, // Start displaying from episode 1
   dramaY: 1, // Start displaying from episode 1
-  dramaA: 1, // Start displaying from episode 1
+  dramaA: 13, // Start displaying from episode 1
   dramaB: 1, // Start displaying from episode 1
   song1: 1, // Start displaying from episode 1
 };
