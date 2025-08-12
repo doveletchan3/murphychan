@@ -83,6 +83,15 @@ function playEpisode(button, drama, episode) {
   playIcon.style.display = "none";
   pauseIcon.style.display = "inline";
   isPlaying = true;
+  
+  // Google Analytics tracking
+  if (typeof gtag === 'function') {
+    gtag('event', 'play_episode', {
+      drama: drama,
+      episode: episode
+    });
+  }
+  
 }
 
 function setActiveButtonStyle(button) {
