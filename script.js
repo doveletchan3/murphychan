@@ -87,8 +87,9 @@ function playEpisode(button, drama, episode) {
   // Google Analytics tracking
   if (typeof gtag === 'function') {
     gtag('event', 'play_episode', {
-      drama: drama,
-      episode: episode
+      drama_name: drama,
+      episode_file: episode,
+      episode_path: `${drama}/${episode}`
     });
   }
   
