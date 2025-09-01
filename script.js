@@ -1,5 +1,5 @@
 const episodes = {
-  dramaB: ["74.mp3", "75.mp3", "76.mp3", "77.mp3", "78.mp3", "79.mp3", "80.mp3", "81.mp3", "82.mp3", "83.mp3", "84.mp3", "85.mp3", "86.mp3", "87.mp3", "88.mp3", "89.mp3", "90.mp3", "91.mp3", "92.mp3", "93.mp3", "94.mp3", "95.mp3", "96.mp3", "97.mp3"],
+  dramaB: ["92.mp3", "93.mp3", "94.mp3", "95.mp3", "96.mp3", "97.mp3", "98.mp3", "99.mp3", "100.mp3", "101.mp3", "102.mp3", "103.mp3", "104.mp3", "105.mp3", "106.mp3", "107.mp3", "108.mp3", "109.mp3", "110.mp3", "111.mp3"],
   dramaC: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3"],
   dramaD: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3"],
   song1: ["song1.mp3", "song2.mp3"],
@@ -10,7 +10,7 @@ const episodes = {
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaB: 74, // Start displaying from episode 1
+  dramaB: 92, // Start displaying from episode 1
   dramaC: 1, // Start displaying from episode 1
   dramaD: 1, // Start displaying from episode 1
   song1: 1, // Start displaying from episode 1
