@@ -1,5 +1,5 @@
 const episodes = {
-  dramaW: ["64.mp3", "65.mp3", "66.mp3", "67.mp3", "68.mp3", "69.mp3", "70.mp3", "71.mp3", "72.mp3", "73.mp3", "74.mp3", "75.mp3", "76.mp3", "77.mp3", "78.mp3", "79.mp3", "80.mp3", "81.mp3", "82.mp3", "83.mp3", "84.mp3", "85.mp3", "86.mp3", "87.mp3"],
+  dramaW: ["84.mp3", "85.mp3", "86.mp3", "87.mp3", "88.mp3", "89.mp3", "90.mp3", "91.mp3", "92.mp3", "93.mp3", "94.mp3", "95.mp3", "96.mp3", "97.mp3", "98.mp3", "99.mp3", "100.mp3", "101.mp3", "102.mp3", "103.mp3", "104.mp3", "105.mp3"],
   song1: ["song1.mp3", "song2.mp3"],
 //
 
@@ -8,7 +8,7 @@ const episodes = {
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaW: 64, // Start displaying from episode 1
+  dramaW: 84, // Start displaying from episode 1
   song1: 1, // Start displaying from episode 1
 };
 
