@@ -29,30 +29,6 @@ let activeDramaButton = null; // To track the active drama button
 let activeEpisodeButton = null; // To track the active episode button
 let isPlaying = false;
 
-// --- Played-episode tracking (persists across reloads via localStorage) ---
-const STORAGE_KEY = "playedEpisodes";
-let playedEpisodes = loadPlayedEpisodes();
-
-function loadPlayedEpisodes() {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? new Set(JSON.parse(stored)) : new Set();
-  } catch (e) {
-    return new Set();
-  }
-}
-
-function savePlayedEpisodes() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([...playedEpisodes]));
-  } catch (e) {}
-}
-
-function episodeKey(drama, episode) {
-  return `${drama}/${episode}`;
-}
-// ---------------------------------------------------------------------
-
 function loadEpisodes(drama) {
   const episodeDiv = document.getElementById("episode-buttons");
   episodeDiv.innerHTML = ""; // Clear episode buttons
@@ -78,12 +54,6 @@ function loadEpisodes(drama) {
       button.textContent = ` ${displayedEpisodeNumber} `;
       button.dataset.episode = episode; // Store episode info
       button.onclick = () => playEpisode(button, drama, episode);
-
-      // Mark as already-played if it's in our stored history
-      if (playedEpisodes.has(episodeKey(drama, episode))) {
-        button.classList.add("episode-played");
-      }
-
       episodeDiv.appendChild(button);
     });
   }
@@ -97,11 +67,6 @@ function playEpisode(button, drama, episode) {
 //  audioPlayer.src = `audio/${drama}/${episode}`;
 
   audioPlayer.play();
-
-  // Record this episode as played (persists across reloads)
-  playedEpisodes.add(episodeKey(drama, episode));
-  savePlayedEpisodes();
-  button.classList.add("episode-played");
 
   // Highlight the active episode button
   if (activeEpisodeButton) resetButtonStyle(activeEpisodeButton); // Reset previous episode button
@@ -125,11 +90,13 @@ function playEpisode(button, drama, episode) {
 }
 
 function setActiveButtonStyle(button) {
-  button.classList.add("episode-active");
+  button.style.backgroundColor = "blue";
+  button.style.color = "white";
 }
 
 function resetButtonStyle(button) {
-  button.classList.remove("episode-active");
+  button.style.backgroundColor = "";
+  button.style.color = "";
 }
 
 // Play/Pause Button
