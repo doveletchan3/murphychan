@@ -167,68 +167,6 @@
     letter-spacing: 0.05em;
   }
 
-  .cal-nav {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(20px, 3vw, 34px);
-    margin-top: 18px;
-  }
-
-  .cal-nav-btn {
-    appearance: none;
-    -webkit-appearance: none;
-    background: transparent;
-    border: 2px solid var(--accent);
-    color: var(--accent);
-    border-radius: 50%;
-    width: clamp(44px, 6vw, 56px);
-    height: clamp(44px, 6vw, 56px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    cursor: pointer;
-    transition: background-color 0.15s, color 0.15s, transform 0.1s;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .cal-nav-btn svg {
-    width: 55%;
-    height: 55%;
-  }
-
-  .cal-nav-btn:active {
-    transform: scale(0.92);
-    background-color: var(--accent);
-    color: var(--paper);
-  }
-
-  .cal-nav-home {
-    width: clamp(50px, 7vw, 64px);
-    height: clamp(50px, 7vw, 64px);
-    background-color: var(--accent);
-    color: var(--paper);
-  }
-
-  .cal-nav-home:active {
-    background-color: var(--accent-dark);
-    border-color: var(--accent-dark);
-    color: var(--paper);
-  }
-
-  @media (hover: hover) {
-    .cal-nav-btn:hover {
-      background-color: var(--accent);
-      color: var(--paper);
-    }
-    .cal-nav-home:hover {
-      background-color: var(--accent-dark);
-      border-color: var(--accent-dark);
-    }
-  }
-
   /* decorative corner brackets, echoing the traditional tear-off calendar look */
   .corner-deco {
     position: relative;
@@ -266,7 +204,7 @@
         <tr>
           <td>大偉
 秀芬
-峻文</td>
+晙文</td>
           <td>9月23日 (農曆 八月初九)
 11月16日
 5月8日</td>
@@ -307,17 +245,6 @@
     </div>
     <div class="cal-lunar-box">
       <div class="cal-lunar" id="cal-lunar"></div>
-    </div>
-    <div class="cal-nav">
-      <button type="button" class="cal-nav-btn" id="cal-prev" aria-label="前一天">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 L8 12 L15 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button type="button" class="cal-nav-btn cal-nav-home" id="cal-home" aria-label="回到今天">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5 L12 4.5 L20 11.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10 V19 H18 V10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19 V14 H14 V19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button type="button" class="cal-nav-btn" id="cal-next" aria-label="後一天">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M9 5 L16 12 L9 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
     </div>
   </div>
 
@@ -432,24 +359,13 @@ function formatLunarDate(date){
 }
 
 /* ---------------------------------------------------------------------
-   Render the currently viewed date into the calendar widget.
-   `viewDate` is the date on display; it starts as today, but the user
-   can step it forward/back with the arrows, or snap back with Home.
+   Render current date into the calendar widget
 --------------------------------------------------------------------- */
 const monthNamesCh = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 const weekdayCh = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
 
-let viewDate = new Date();
-let followingToday = true; // false once the user navigates away from today
-
-function isSameDay(a, b){
-  return a.getFullYear() === b.getFullYear() &&
-         a.getMonth() === b.getMonth() &&
-         a.getDate() === b.getDate();
-}
-
 function renderCalendar(){
-  const now = viewDate;
+  const now = new Date();
   const dow = now.getDay(); // 0 = Sunday
 
   document.getElementById('cal-year').textContent = now.getFullYear();
@@ -466,43 +382,9 @@ function renderCalendar(){
   }
 }
 
-function goToPrevDay(){
-  viewDate = new Date(viewDate);
-  viewDate.setDate(viewDate.getDate() - 1);
-  followingToday = false;
-  renderCalendar();
-}
-
-function goToNextDay(){
-  viewDate = new Date(viewDate);
-  viewDate.setDate(viewDate.getDate() + 1);
-  followingToday = false;
-  renderCalendar();
-}
-
-function goToToday(){
-  viewDate = new Date();
-  followingToday = true;
-  renderCalendar();
-}
-
-document.getElementById('cal-prev').addEventListener('click', goToPrevDay);
-document.getElementById('cal-next').addEventListener('click', goToNextDay);
-document.getElementById('cal-home').addEventListener('click', goToToday);
-
 renderCalendar();
-
-// While the user hasn't navigated away, keep the view in sync with the
-// real date (so the page stays correct if left open across midnight).
-setInterval(() => {
-  if(followingToday){
-    const realNow = new Date();
-    if(!isSameDay(viewDate, realNow)){
-      viewDate = realNow;
-      renderCalendar();
-    }
-  }
-}, 60 * 1000);
+// refresh shortly after midnight in case the page is left open
+setInterval(renderCalendar, 60 * 1000);
 
 /* ---------------------------------------------------------------------
    Match the calendar's height to the birthday table's rendered height,
