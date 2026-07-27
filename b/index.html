@@ -43,6 +43,10 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     flex: 1 1 480px;
     max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
   }
 
   table.birthdays {
@@ -97,7 +101,7 @@
     border-radius: 6px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.18);
     color: var(--accent);
-    padding: clamp(14px, 2.5vw, 28px) clamp(16px, 3vw, 32px) clamp(22px, 4vw, 40px);
+    padding: clamp(18px, 3vw, 34px) clamp(16px, 3vw, 32px) clamp(30px, 5vw, 50px);
     text-align: center;
     transition: color 0.3s, border-color 0.3s;
   }
@@ -142,7 +146,7 @@
     font-size: clamp(120px, 24vw, 320px);
     font-weight: 900;
     line-height: 1;
-    margin: 18px 0 28px;
+    margin: 24px 0 36px;
     font-family: "Songti TC", "STSong", "Noto Serif TC", serif;
   }
 
@@ -150,7 +154,7 @@
     border: 2px solid var(--accent);
     border-radius: 4px;
     padding: 14px 10px;
-    margin-top: 16px;
+    margin-top: 20px;
     position: relative;
     flex: 0 0 auto;
   }
@@ -173,7 +177,7 @@
     align-items: center;
     justify-content: center;
     gap: clamp(20px, 3vw, 34px);
-    margin-top: 18px;
+    margin-top: 26px;
   }
 
   .cal-nav-btn {
@@ -505,37 +509,37 @@ setInterval(() => {
 }, 60 * 1000);
 
 /* ---------------------------------------------------------------------
-   Match the calendar's height to the birthday table's rendered height,
-   without changing the table's own size in any way.
+   Match the birthday table's height to the calendar's rendered height,
+   without changing the calendar's own natural size in any way.
 --------------------------------------------------------------------- */
-function syncCalendarHeight(){
+function syncTableHeight(){
   const tableWrap = document.querySelector('.table-wrap');
   const calendar = document.getElementById('calendar');
   if(!tableWrap || !calendar) return;
 
   // On narrow/stacked layouts (see the max-width:640px rule) let the
-  // calendar size itself naturally instead of matching the table.
+  // table size itself naturally instead of matching the calendar.
   if(window.matchMedia('(max-width: 640px)').matches){
-    calendar.style.height = '';
+    tableWrap.style.height = '';
     return;
   }
 
-  calendar.style.height = tableWrap.offsetHeight + 'px';
+  tableWrap.style.height = calendar.offsetHeight + 'px';
 }
 
-window.addEventListener('load', syncCalendarHeight);
-window.addEventListener('resize', syncCalendarHeight);
-window.addEventListener('orientationchange', syncCalendarHeight);
+window.addEventListener('load', syncTableHeight);
+window.addEventListener('resize', syncTableHeight);
+window.addEventListener('orientationchange', syncTableHeight);
 
 if('ResizeObserver' in window){
-  const tableWrapEl = document.querySelector('.table-wrap');
-  if(tableWrapEl){
-    const ro = new ResizeObserver(syncCalendarHeight);
-    ro.observe(tableWrapEl);
+  const calendarEl = document.getElementById('calendar');
+  if(calendarEl){
+    const ro = new ResizeObserver(syncTableHeight);
+    ro.observe(calendarEl);
   }
 }
 
-syncCalendarHeight();
+syncTableHeight();
 </script>
 </body>
 </html>
