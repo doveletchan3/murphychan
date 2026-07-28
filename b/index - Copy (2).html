@@ -46,18 +46,17 @@
 
   /* ---------- Left: static birthday table ---------- */
   .table-wrap {
-	background: var(--paper);
-	border: 2px solid #4a4530;
-	border-radius: 4px;
-	overflow-x: hidden;
-	overflow-y: auto; /* Allows scrolling if content is taller than container */
-	box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-	flex: 1 1 480px;
-	max-width: 560px;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start; /* Prevents flexbox from pushing top/bottom rows offscreen */
-	box-sizing: border-box;
+    background: var(--paper);
+    border: 2px solid #4a4530;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    flex: 1 1 480px;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
   }
 
   table.birthdays {
@@ -273,26 +272,10 @@
   .corner-deco::before { left: 4px; border-right: none; border-bottom: none; }
   .corner-deco::after { right: 4px; border-left: none; border-bottom: none; }
 
-@media (max-width: 640px) {
-  .page { 
-    flex-direction: column; 
-    align-items: center; 
+  @media (max-width: 640px) {
+    .page { flex-direction: column; align-items: center; }
+    .calendar { width: min(90vw, 420px); height: auto !important; }
   }
-  .calendar { 
-    width: min(90vw, 420px); 
-    height: auto !important; 
-  }
-  .table-wrap {
-    width: 100%;
-    max-width: 420px;
-  }
-  table.birthdays {
-    font-size: clamp(16px, 4.5vw, 22px); /* Scale down font for mobile */
-  }
-  table.birthdays th, table.birthdays td {
-    padding: 6px 10px; /* Reduce padding on mobile */
-  }
-}
 </style>
 </head>
 <body>
