@@ -12,10 +12,17 @@
     .then(data => {
       const allowedCountries = ['HK', 'CA'];
       if (allowedCountries.includes(data.country_code)) {
-        // Safe region: reveal the calendar layout
-        document.body.style.display = 'block';
+        // Safe region: reveal the calendar layout cleanly
+        document.addEventListener('DOMContentLoaded', () => {
+          document.body.style.display = 'block';
+          document.body.style.opacity = '1';
+        });
+        if (document.body) {
+          document.body.style.display = 'block';
+          document.body.style.opacity = '1';
+        }
       } else {
-        // Blocked region: replace content instantly
+        // Blocked region: replace content instantly with 403 message
         document.documentElement.innerHTML = `
           <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,13 +52,17 @@
           <body>
             <div class="card">
               <h2>403 - Access Restricted</h2>
+              <p>This page is only accessible from Hong Kong and Canada.</p>
             </div>
           </body>`;
       }
     })
     .catch(() => {
-      // Fallback: reveal page if API check fails
-      document.body.style.display = 'block';
+      // Fallback: reveal page if API check fails or is blocked
+      if (document.body) {
+        document.body.style.display = 'block';
+        document.body.style.opacity = '1';
+      }
     });
 </script>
 
@@ -80,10 +91,9 @@
   * { box-sizing: border-box; }
 
 /* CSS: Hides body by default until geo-check approves access */
-  body {
-    opacity: 0;
-    transition: opacity 2.2s ease-in;
-  }
+body {
+  /* Handled entirely by inline display style */
+}
 
   html, body {
     margin: 0;
