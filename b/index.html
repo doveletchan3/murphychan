@@ -575,6 +575,16 @@ function highlightUpcomingBirthday(){
 highlightUpcomingBirthday();
 
 /* ---------------------------------------------------------------------
+     Automatically refresh the calendar to "Today" whenever 
+     the user opens or switches back to the app on iPad
+  --------------------------------------------------------------------- */
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      goToToday(); // Snaps calendar to today's date & refreshes birthday highlight
+    }
+  });
+
+/* ---------------------------------------------------------------------
    Match the birthday table's height to the calendar's rendered height,
    without changing the calendar's own natural size in any way.
 --------------------------------------------------------------------- */
