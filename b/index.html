@@ -2,6 +2,56 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
+
+<!-- =========================================================
+     Geo-location Access Restriction (HK & Canada Only)
+========================================================= -->
+<script>
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+      const allowedCountries = ['HK', 'CA'];
+      if (!allowedCountries.includes(data.country_code)) {
+        // Block access and replace page content if outside HK or CA
+        document.documentElement.innerHTML = `
+          <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>403 - Access Restricted</title>
+            <style>
+              body { 
+                background: #ece6d2; 
+                font-family: sans-serif; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                height: 100vh; 
+                margin: 0; 
+                color: #3a3624;
+              }
+              .card {
+                background: #f6f1de;
+                border: 2px solid #4a4530;
+                padding: 30px;
+                border-radius: 8px;
+                text-align: center;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+                max-width: 80%;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="card">
+              <h2>403 - Access Restricted</h2>
+            </div>
+          </body>`;
+      }
+    })
+    .catch(() => {
+      // If the IP lookup API fails or is blocked by an adblocker, let the page load normally
+      console.warn('Geo-check request failed.');
+    });
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>生日 &amp; 日曆</title>
 
