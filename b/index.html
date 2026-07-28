@@ -7,22 +7,15 @@
      Geo-location Access Restriction (HK & Canada Only)
 ========================================================= -->
 <script>
-  // Check location immediately
   fetch('https://ipapi.co/json/')
     .then(response => response.json())
     .then(data => {
       const allowedCountries = ['HK', 'CA'];
       if (allowedCountries.includes(data.country_code)) {
-        // If allowed, fade in the page body smoothly
-        document.addEventListener('DOMContentLoaded', () => {
-          document.body.style.opacity = '1';
-        });
-        // Fallback in case DOMContentLoaded already fired
-        if (document.readyState === 'complete' || document.readyState === 'interactive') {
-          document.body.style.opacity = '1';
-        }
+        // Safe region: reveal the calendar layout
+        document.body.style.display = 'block';
       } else {
-        // If not allowed, instantly replace HTML with the 403 block
+        // Blocked region: replace content instantly
         document.documentElement.innerHTML = `
           <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +24,7 @@
               body { 
                 background: #ece6d2; 
                 font-family: sans-serif; 
-                display: flex; 
+                display: flex !important; 
                 align-items: center; 
                 justify-content: center; 
                 height: 100vh; 
@@ -52,14 +45,13 @@
           <body>
             <div class="card">
               <h2>403 - Access Restricted</h2>
-              <p>This calendar page is only accessible from Hong Kong and Canada.</p>
             </div>
           </body>`;
       }
     })
     .catch(() => {
-      // If the API fails or is blocked, let the page load normally as a fallback
-      document.body.style.opacity = '1';
+      // Fallback: reveal page if API check fails
+      document.body.style.display = 'block';
     });
 </script>
 
@@ -362,7 +354,7 @@
 }
 </style>
 </head>
-<body>
+<body style="display: none;">
 <div class="page">
 
   <!-- ============ Left: birthday table ============ -->
