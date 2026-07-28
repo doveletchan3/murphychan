@@ -52,14 +52,30 @@
   table.birthdays {
     width: 100%;
     border-collapse: collapse;
-    font-size: clamp(16px, 2.2vw, 20px);
+    font-size: clamp(22px, 3.2vw, 30px);
+  }
+
+  table.birthdays .small-name {
+    font-size: 0.62em;
+    font-weight: 500;
   }
 
   table.birthdays th, table.birthdays td {
-    border: 1px solid var(--line);
-    padding: 14px 18px;
-    vertical-align: top;
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid rgba(138,130,101,0.35);
+    padding: 5px 18px;
+    vertical-align: middle;
     color: #3a3624;
+  }
+
+  table.birthdays thead th {
+    border-top: 1px solid var(--line);
+    border-bottom: 2px solid #4a4530;
+  }
+
+  table.birthdays tbody tr.group-end td {
+    border-bottom: 2px solid #4a4530;
   }
 
   table.birthdays th {
@@ -73,17 +89,10 @@
   table.birthdays td:first-child {
     width: 34%;
     font-weight: 600;
-    line-height: 2;
-    white-space: pre-line;
   }
 
-  table.birthdays td:last-child {
-    line-height: 2;
-    white-space: pre-line;
-  }
-
-  table.birthdays tbody tr:not(:last-child) td {
-    border-bottom: 2px solid #4a4530;
+  table.birthdays tbody tr.upcoming-birthday td {
+    background-color: #cfe8d4;
   }
 
   /* ---------- Right: calendar ---------- */
@@ -257,7 +266,7 @@
 <body>
 <div class="page">
 
-  <!-- ============ Left: static birthday table (do not change) ============ -->
+  <!-- ============ Left: birthday table ============ -->
   <div class="table-wrap">
     <table class="birthdays">
       <thead>
@@ -267,32 +276,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>大偉
-秀芬
-晙文</td>
-          <td>9月23日 (農曆 八月初九)
-11月16日
-5月8日</td>
-        </tr>
-        <tr>
-          <td>君美
-威廉
-仔仔 (Eddie)
-妹妹 (Rachel)</td>
-          <td>10月12日 (農曆 九月初九)
-7月13日
-5月6日
-3月31日</td>
-        </tr>
-        <tr>
-          <td>偉鳴
-潔明
-柏熹</td>
-          <td>7月25日 (農曆 六月十二)
-6月2日
-8月27日</td>
-        </tr>
+        <tr data-month="9" data-day="23"><td>大偉</td><td>9月23日 (農曆 八月初九)</td></tr>
+        <tr data-month="11" data-day="16"><td>秀芬</td><td>11月16日</td></tr>
+        <tr data-month="5" data-day="8" class="group-end"><td>晙文</td><td>5月8日</td></tr>
+
+        <tr data-month="10" data-day="12"><td>君美</td><td>10月12日 (農曆 九月初九)</td></tr>
+        <tr data-month="7" data-day="13"><td>威廉</td><td>7月13日</td></tr>
+        <tr data-month="5" data-day="6"><td>仔仔 <span class="small-name">(Eddie)</span></td><td>5月6日</td></tr>
+        <tr data-month="3" data-day="31" class="group-end"><td>妹妹 <span class="small-name">(Rachel)</span></td><td>3月31日</td></tr>
+
+        <tr data-month="7" data-day="25"><td>偉鳴</td><td>7月25日 (農曆 六月十二)</td></tr>
+        <tr data-month="6" data-day="2"><td>潔明</td><td>6月2日</td></tr>
+        <tr data-month="8" data-day="27" class="group-end"><td>柏熹</td><td>8月27日</td></tr>
       </tbody>
     </table>
   </div>
@@ -506,7 +501,46 @@ setInterval(() => {
       renderCalendar();
     }
   }
+  highlightUpcomingBirthday();
 }, 60 * 1000);
+
+/* ---------------------------------------------------------------------
+   Highlight the row of the next upcoming birthday (based on the real
+   current date, regardless of which day the calendar is showing).
+   Ties (a birthday that falls today) count as "upcoming" too.
+--------------------------------------------------------------------- */
+function highlightUpcomingBirthday(){
+  const rows = document.querySelectorAll('table.birthdays tbody tr');
+  if(!rows.length) return;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  let bestRow = null;
+  let bestDiff = Infinity;
+
+  rows.forEach(row => {
+    const month = parseInt(row.dataset.month, 10);
+    const day = parseInt(row.dataset.day, 10);
+    if(!month || !day) return;
+
+    let target = new Date(today.getFullYear(), month - 1, day);
+    if(target < today){
+      target = new Date(today.getFullYear() + 1, month - 1, day);
+    }
+
+    const diff = Math.round((target - today) / 86400000);
+    if(diff < bestDiff){
+      bestDiff = diff;
+      bestRow = row;
+    }
+  });
+
+  rows.forEach(row => row.classList.remove('upcoming-birthday'));
+  if(bestRow) bestRow.classList.add('upcoming-birthday');
+}
+
+highlightUpcomingBirthday();
 
 /* ---------------------------------------------------------------------
    Match the birthday table's height to the calendar's rendered height,
