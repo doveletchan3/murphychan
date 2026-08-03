@@ -57,10 +57,13 @@
   <h2>MP3 Filename Generator</h2>
 
   <label for="startNum">Start#</label>
-  <input type="number" id="startNum" placeholder="e.g. 15">
+  <input type="number" id="startNum" placeholder="e.g. 15" oninput="updateEndNum()">
+
+  <label for="incNum">Inc#</label>
+  <input type="number" id="incNum" placeholder="e.g. 5" oninput="updateEndNum()">
 
   <label for="endNum">End#</label>
-  <input type="number" id="endNum" placeholder="e.g. 20">
+  <input type="number" id="endNum" placeholder="e.g. 20" oninput="updateIncNum()">
 
   <button onclick="generateMP3List()">Generate</button>
 
@@ -71,11 +74,36 @@
   <div id="count"></div>
 
   <script>
+    function updateEndNum() {
+      const start = parseFloat(document.getElementById('startNum').value);
+      const inc = parseFloat(document.getElementById('incNum').value);
+      if (!isNaN(start) && !isNaN(inc)) {
+        document.getElementById('endNum').value = start + inc;
+      }
+    }
+
+    function updateIncNum() {
+      const start = parseFloat(document.getElementById('startNum').value);
+      const end = parseFloat(document.getElementById('endNum').value);
+      if (!isNaN(start) && !isNaN(end)) {
+        document.getElementById('incNum').value = end - start;
+      }
+    }
+
     function generateMP3List() {
-      const start = parseInt(document.getElementById('startNum').value);
-      const end = parseInt(document.getElementById('endNum').value);
+      let start = parseInt(document.getElementById('startNum').value);
+      let inc = parseInt(document.getElementById('incNum').value);
+      let end = parseInt(document.getElementById('endNum').value);
       const resultDiv = document.getElementById('result');
       const countDiv = document.getElementById('count');
+
+      if (isNaN(end) && !isNaN(start) && !isNaN(inc)) {
+        end = start + inc;
+        document.getElementById('endNum').value = end;
+      } else if (isNaN(inc) && !isNaN(start) && !isNaN(end)) {
+        inc = end - start;
+        document.getElementById('incNum').value = inc;
+      }
 
       if (isNaN(start) || isNaN(end) || start > end) {
         resultDiv.textContent = "Please enter valid numbers (start ≤ end).";
@@ -83,11 +111,11 @@
         return;
       }
 
-      let output = '';
+      let output = '[';
       for (let i = start; i <= end; i++) {
         output += `"${i}.mp3", `;
       }
-      output = output.slice(0, -2) + "]"; // replace last comma+space with ]
+      output = output.slice(0, -2) + "]";
       resultDiv.textContent = output;
       countDiv.textContent = `Total: ${end - start + 1} files`;
     }
