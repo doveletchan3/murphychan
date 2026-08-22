@@ -115,7 +115,7 @@
       for (let i = start; i <= end; i++) {
         output += `"${i}.mp3", `;
       }
-      output = output.slice(0, -2) + "]";
+      output = output.slice(0, -2) + "],";
       resultDiv.textContent = output;
       countDiv.textContent = `Total: ${end - start + 1} files`;
     }
