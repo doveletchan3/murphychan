@@ -1,6 +1,8 @@
 const episodes = {
   dramaR: ["50.mp3", "51.mp3", "52.mp3", "53.mp3", "54.mp3", "55.mp3", "56.mp3", "57.mp3", "58.mp3", "59.mp3", "60.mp3", "61.mp3", "62.mp3", "63.mp3", "64.mp3", "65.mp3", "66.mp3", "67.mp3"],
   dramaS: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3"],
+  dramaT: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3"],
+  dramaU: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3"],
   song1: ["01.mp3","02.mp3"],
   
 //
@@ -15,6 +17,8 @@ const episodes = {
 const startingEpisodes = {
   dramaR: 50,  // Start displaying from episode 1
   dramaS: 1,  // Start displaying from episode 1
+  dramaT: 1,  // Start displaying from episode 1
+  dramaU: 1,  // Start displaying from episode 1
   song1: 1, // Start displaying from episode 1
 };
 
@@ -22,6 +26,8 @@ const startingEpisodes = {
 const episodeIncrements = {
   dramaR: 1, // Increment by 1
   dramaS: 1, // Increment by 1
+  dramaT: 1, // Increment by 1
+  dramaU: 1, // Increment by 1
   song1: 1, // Increment by 1
 };
 
