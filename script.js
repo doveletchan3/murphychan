@@ -11,7 +11,7 @@ const episodes = {
 
 // Define starting episodes for each drama
 const startingEpisodes = {
-  dramaK1: 1,  // Start displaying from episode 1 
+  dramaK1: 13,  // Start displaying from episode 1 
   song1: 1, // Start displaying from episode 1
 };
 
