@@ -1,6 +1,5 @@
 const episodes = {
-  dramaK1: ["53.mp3", "54.mp3", "55.mp3", "56.mp3", "57.mp3", "58.mp3", "59.mp3", "60.mp3", "61.mp3", "62.mp3", "63.mp3", "64.mp3", "65.mp3", "66.mp3", "67.mp3", "68.mp3", "69.mp3", "70.mp3", "71.mp3", "72.mp3", "73.mp3", "74.mp3"],
-  dramaL1: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3"],
+  dramaL1: ["14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "30.mp3", "31.mp3", "32.mp3", "33.mp3", "34.mp3", "35.mp3", "36.mp3", "37.mp3"],
   song1: ["01.mp3","02.mp3"],
 //
 //  dramaXXX: ["01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", "06.mp3", "07.mp3", "08.mp3", "09.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3"],
@@ -13,7 +12,7 @@ const episodes = {
 // Define starting episodes for each drama
 const startingEpisodes = {
   dramaK1: 53,  // Start displaying from episode 1 
-  dramaL1: 1,  // Start displaying from episode 1 
+  dramaL1: 14,  // Start displaying from episode 1 
   song1: 1, // Start displaying from episode 1
 };
 
