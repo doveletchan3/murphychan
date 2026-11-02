@@ -44,6 +44,65 @@ let activeDramaButton = null; // To track the active drama button
 let activeEpisodeButton = null; // To track the active episode button
 let isPlaying = false;
 
+// --- Screen Wake Lock (keeps screen awake while audio is playing) ---
+let wakeLock = null;
+
+async function requestWakeLock() {
+  if ('wakeLock' in navigator) {
+    try {
+      if (!wakeLock || wakeLock.released) {
+        wakeLock = await navigator.wakeLock.request('screen');
+        wakeLock.addEventListener('release', () => {
+          wakeLock = null;
+        });
+      }
+    } catch (err) {
+      console.warn(`Wake Lock request failed: ${err.name}, ${err.message}`);
+    }
+  }
+}
+
+async function releaseWakeLock() {
+  if (wakeLock) {
+    try {
+      await wakeLock.release();
+    } catch (err) {
+      console.warn(`Wake Lock release failed: ${err.name}, ${err.message}`);
+    } finally {
+      wakeLock = null;
+    }
+  }
+}
+
+// Re-acquire wake lock when returning to the tab if audio is still playing
+document.addEventListener('visibilitychange', async () => {
+  if (document.visibilityState === 'visible' && !audioPlayer.paused) {
+    await requestWakeLock();
+  }
+});
+
+// Keep UI state and Wake Lock in sync with audio player events
+audioPlayer.addEventListener("play", () => {
+  isPlaying = true;
+  playIcon.style.display = "none";
+  pauseIcon.style.display = "inline";
+  requestWakeLock();
+});
+
+audioPlayer.addEventListener("pause", () => {
+  isPlaying = false;
+  playIcon.style.display = "inline";
+  pauseIcon.style.display = "none";
+  releaseWakeLock();
+});
+
+audioPlayer.addEventListener("ended", () => {
+  isPlaying = false;
+  playIcon.style.display = "inline";
+  pauseIcon.style.display = "none";
+  releaseWakeLock();
+});
+
 // --- Played-episode tracking (persists across reloads via localStorage) ---
 const STORAGE_KEY = "playedEpisodes";
 let playedEpisodes = loadPlayedEpisodes();
@@ -123,11 +182,6 @@ function playEpisode(button, drama, episode) {
   setActiveButtonStyle(button); // Highlight current episode button
   activeEpisodeButton = button;
 
-  // Ensure the Play/Pause button shows "Pause" and updates state
-  playIcon.style.display = "none";
-  pauseIcon.style.display = "inline";
-  isPlaying = true;
-  
   // Google Analytics tracking
   if (typeof gtag === 'function') {
     gtag('event', 'play_episode', {
@@ -149,25 +203,17 @@ function resetButtonStyle(button) {
 
 // Play/Pause Button
 playPauseBtn.addEventListener("click", () => {
-  if (isPlaying) {
-    audioPlayer.pause();
-    playIcon.style.display = "inline";
-    pauseIcon.style.display = "none";
-  } else {
+  if (audioPlayer.paused) {
     audioPlayer.play();
-    playIcon.style.display = "none";
-    pauseIcon.style.display = "inline";
+  } else {
+    audioPlayer.pause();
   }
-  isPlaying = !isPlaying;
 });
 
 // Stop Button
 stopBtn.addEventListener("click", () => {
   audioPlayer.pause();
   audioPlayer.currentTime = 0; // Reset to the beginning
-  isPlaying = false;
-  playIcon.style.display = "inline";
-  pauseIcon.style.display = "none";
 });
 
 // Refresh Page
