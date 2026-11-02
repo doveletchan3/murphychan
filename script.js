@@ -168,6 +168,7 @@ function playEpisode(button, drama, episode) {
 //  audioPlayer.src = `audio/${drama}/${episode}`;
 
   audioPlayer.play();
+  requestWakeLock();
 
   // Record this episode as played (persists across reloads)
   playedEpisodes.add(episodeKey(drama, episode));
@@ -202,6 +203,7 @@ function resetButtonStyle(button) {
 playPauseBtn.addEventListener("click", () => {
   if (audioPlayer.paused) {
     audioPlayer.play();
+    requestWakeLock();
   } else {
     audioPlayer.pause();
   }
