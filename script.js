@@ -76,7 +76,7 @@ async function releaseWakeLock() {
 }
 
 // --- Auto-Dim during playback (Software Dimming to save battery & eyes) ---
-const DIM_IDLE_DELAY = 15000; // 15 seconds of inactivity before dimming
+const DIM_IDLE_DELAY = 3 * 60 * 1000; // 3 minutes of inactivity before dimming
 let dimTimer = null;
 
 function dimScreen() {
@@ -123,8 +123,8 @@ if (dimOverlay) {
   dimOverlay.addEventListener("touchend", wakeFromDim);
 }
 
-// Reset idle dim timer on any user activity when not dimmed
-["pointerdown", "keydown"].forEach((evt) => {
+// Reset idle dim timer on any user activity (tap, click, key, scroll) when not dimmed
+["pointerdown", "keydown", "scroll", "touchstart"].forEach((evt) => {
   window.addEventListener(evt, () => {
     if (dimOverlay && !dimOverlay.classList.contains("active")) {
       resetDimTimer();
