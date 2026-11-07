@@ -30,6 +30,7 @@ const playIcon = document.getElementById("play-icon");
 const pauseIcon = document.getElementById("pause-icon");
 const stopBtn = document.getElementById("stop-btn");
 const refreshBtn = document.getElementById("refresh-btn");
+const dimOverlay = document.getElementById("dim-overlay");
 
 let activeDramaButton = null; // To track the active drama button
 let activeEpisodeButton = null; // To track the active episode button
@@ -65,10 +66,72 @@ async function releaseWakeLock() {
   }
 }
 
+// --- Auto-Dim during playback (Software Dimming to save battery & eyes) ---
+const DIM_IDLE_DELAY = 15000; // 15 seconds of inactivity before dimming
+let dimTimer = null;
+
+function dimScreen() {
+  if (isPlaying && !audioPlayer.paused && dimOverlay) {
+    dimOverlay.classList.add("active");
+  }
+}
+
+function wakeFromDim(e) {
+  if (e) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  if (dimOverlay) {
+    dimOverlay.classList.remove("active");
+  }
+  resetDimTimer();
+}
+
+function resetDimTimer() {
+  if (dimTimer) {
+    clearTimeout(dimTimer);
+    dimTimer = null;
+  }
+  // Only schedule dimming if audio is actively playing
+  if (isPlaying && !audioPlayer.paused) {
+    dimTimer = setTimeout(dimScreen, DIM_IDLE_DELAY);
+  }
+}
+
+function clearDim() {
+  if (dimTimer) {
+    clearTimeout(dimTimer);
+    dimTimer = null;
+  }
+  if (dimOverlay) {
+    dimOverlay.classList.remove("active");
+  }
+}
+
+if (dimOverlay) {
+  // Tap/click overlay to wake screen up without triggering underlying buttons
+  dimOverlay.addEventListener("click", wakeFromDim);
+  dimOverlay.addEventListener("touchend", wakeFromDim);
+}
+
+// Reset idle dim timer on any user activity when not dimmed
+["pointerdown", "keydown"].forEach((evt) => {
+  window.addEventListener(evt, () => {
+    if (dimOverlay && !dimOverlay.classList.contains("active")) {
+      resetDimTimer();
+    }
+  }, { passive: true });
+});
+
 // Re-acquire wake lock when returning to the tab if audio is still playing
 document.addEventListener('visibilitychange', async () => {
-  if (document.visibilityState === 'visible' && !audioPlayer.paused) {
-    await requestWakeLock();
+  if (document.visibilityState === 'visible') {
+    if (!audioPlayer.paused) {
+      await requestWakeLock();
+      resetDimTimer();
+    }
+  } else {
+    clearDim();
   }
 });
 
@@ -78,6 +141,7 @@ audioPlayer.addEventListener("play", () => {
   playIcon.style.display = "none";
   pauseIcon.style.display = "inline";
   requestWakeLock();
+  resetDimTimer();
 });
 
 audioPlayer.addEventListener("pause", () => {
@@ -85,6 +149,7 @@ audioPlayer.addEventListener("pause", () => {
   playIcon.style.display = "inline";
   pauseIcon.style.display = "none";
   releaseWakeLock();
+  clearDim();
 });
 
 audioPlayer.addEventListener("ended", () => {
@@ -92,6 +157,7 @@ audioPlayer.addEventListener("ended", () => {
   playIcon.style.display = "inline";
   pauseIcon.style.display = "none";
   releaseWakeLock();
+  clearDim();
 });
 
 // --- Played-episode tracking (persists across reloads via localStorage) ---

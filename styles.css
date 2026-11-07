@@ -98,3 +98,36 @@ button.active {
 #refresh-btn:active {
   background-color: #6d1603; /* Even darker red for active */
 }
+
+/* Auto-dim overlay during playback */
+#dim-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+#dim-overlay.active {
+  opacity: 0.96;
+  visibility: visible;
+}
+
+#dim-overlay .dim-hint {
+  color: #666;
+  font-size: 22px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
