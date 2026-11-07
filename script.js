@@ -47,19 +47,26 @@ let isPlaying = false;
 
 // --- Screen Wake Lock (keeps screen awake while audio is playing) ---
 let wakeLock = null;
+let isRequestingWakeLock = false;
 
 async function requestWakeLock() {
-  if ('wakeLock' in navigator) {
-    try {
-      if (!wakeLock || wakeLock.released) {
-        wakeLock = await navigator.wakeLock.request('screen');
-        wakeLock.addEventListener('release', () => {
-          wakeLock = null;
-        });
+  if (!('wakeLock' in navigator)) return;
+  if (wakeLock && !wakeLock.released) return;
+  if (isRequestingWakeLock) return; // Prevent duplicate concurrent requests
+
+  isRequestingWakeLock = true;
+  try {
+    const lock = await navigator.wakeLock.request('screen');
+    wakeLock = lock;
+    wakeLock.addEventListener('release', () => {
+      if (wakeLock === lock) {
+        wakeLock = null;
       }
-    } catch (err) {
-      console.warn(`Wake Lock request failed: ${err.name}, ${err.message}`);
-    }
+    });
+  } catch (err) {
+    console.warn(`Wake Lock request failed: ${err.name}, ${err.message}`);
+  } finally {
+    isRequestingWakeLock = false;
   }
 }
 
@@ -96,11 +103,15 @@ function wakeFromDim(e) {
   resetDimTimer();
 }
 
-function resetDimTimer() {
+function cancelDimTimer() {
   if (dimTimer) {
     clearTimeout(dimTimer);
     dimTimer = null;
   }
+}
+
+function resetDimTimer() {
+  cancelDimTimer();
   // Only schedule dimming if audio is actively playing
   if (isPlaying && !audioPlayer.paused) {
     dimTimer = setTimeout(dimScreen, DIM_IDLE_DELAY);
@@ -108,10 +119,7 @@ function resetDimTimer() {
 }
 
 function clearDim() {
-  if (dimTimer) {
-    clearTimeout(dimTimer);
-    dimTimer = null;
-  }
+  cancelDimTimer();
   if (dimOverlay) {
     dimOverlay.classList.remove("active");
   }
@@ -135,12 +143,12 @@ if (dimOverlay) {
 // Re-acquire wake lock when returning to the tab if audio is still playing
 document.addEventListener('visibilitychange', async () => {
   if (document.visibilityState === 'visible') {
-    if (!audioPlayer.paused) {
+    if (!audioPlayer.paused && isPlaying) {
       await requestWakeLock();
       resetDimTimer();
     }
   } else {
-    clearDim();
+    cancelDimTimer();
   }
 });
 
@@ -158,15 +166,15 @@ audioPlayer.addEventListener("pause", () => {
   playIcon.style.display = "inline";
   pauseIcon.style.display = "none";
   releaseWakeLock();
-  clearDim();
+  cancelDimTimer();
 });
 
 audioPlayer.addEventListener("ended", () => {
   isPlaying = false;
   playIcon.style.display = "inline";
   pauseIcon.style.display = "none";
-  releaseWakeLock();
-  clearDim();
+  releaseWakeLock(); // Release wake lock so iPad system screen timeout can turn off display
+  cancelDimTimer();  // Stop dim timer, but keep black screen so it doesn't suddenly flash the bright menu
 });
 
 // --- Played-episode tracking (persists across reloads via localStorage) ---
@@ -282,6 +290,7 @@ playPauseBtn.addEventListener("click", () => {
 stopBtn.addEventListener("click", () => {
   audioPlayer.pause();
   audioPlayer.currentTime = 0; // Reset to the beginning
+  clearDim();
 });
 
 // Refresh Page
